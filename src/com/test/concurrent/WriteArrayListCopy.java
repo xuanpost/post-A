@@ -7,10 +7,10 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * CopyOnWriteArrayList线程安全
+ * CopyOnWriteArrayList绾跨▼瀹夊叏
  * 
  * @author zx2015
- *
+ * 
  */
 public class WriteArrayListCopy {
 
@@ -31,7 +31,7 @@ public class WriteArrayListCopy {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		System.out.println("List集合size==" + list.size());
+		System.out.println("List闆嗗悎size==" + list.size());
 
 	}
 

@@ -14,21 +14,20 @@ public class SortTest {
 	}
 
 	/**
-	 * ð�ݷ�����<br/>
-	 * <li>�Ƚ����ڵ�Ԫ�ء������һ���ȵڶ����󣬾ͽ�������������</li>
-	 * <li>��ÿһ������Ԫ����ͬ���Ĺ������ӿ�ʼ��һ�Ե���β�����һ�ԡ�����һ�㣬����Ԫ��Ӧ�û�����������</li>
-	 * <li>������е�Ԫ���ظ����ϵĲ��裬�������һ����</li>
-	 * <li>����ÿ�ζ�Խ��Խ�ٵ�Ԫ���ظ�����Ĳ��裬ֱ��û���κ�һ��������Ҫ�Ƚϡ�</li>
+	 * 冒泡法排序<br/>
+	 * <li>比较相邻的元素。如果第一个比第二个大，就交换他们两个。</li> <li>
+	 * 对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。在这一点，最后的元素应该会是最大的数。</li> <li>
+	 * 针对所有的元素重复以上的步骤，除了最后一个。</li> <li>持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。</li>
 	 * 
 	 * @param numbers
-	 *            ��Ҫ�������������
+	 *            需要排序的整型数组
 	 */
 	public static void bubbleSort(int[] numbers) {
-		int temp; // ��¼��ʱ�м�ֵ
-		int size = numbers.length; // �����С
+		int temp; // 记录临时中间值
+		int size = numbers.length; // 数组大小
 		for (int i = 0; i < size - 1; i++) {
 			for (int j = i + 1; j < size; j++) {
-				if (numbers[i] > numbers[j]) { // ����������λ��
+				if (numbers[i] > numbers[j]) { // 交换两数的位置
 					temp = numbers[i];
 					numbers[i] = numbers[j];
 					numbers[j] = temp;
@@ -38,23 +37,25 @@ public class SortTest {
 	}
 
 	/**
-	 * ��������<br/>
+	 * 快速排序<br/>
 	 * <ul>
-	 * <li>������������һ��Ԫ�أ���Ϊ����׼��</li>
-	 * <li>�����������У�����Ԫ�رȻ�׼ֵС�İڷ��ڻ�׼ǰ�棬����Ԫ�رȻ�׼ֵ��İ��ڻ�׼�ĺ��棨��ͬ�������Ե���һ�ߣ���������ָ�֮��
-	 * �û�׼���������λ�á������Ϊ�ָpartition��������</li>
-	 * <li>�ݹ�ذ�С�ڻ�׼ֵԪ�ص������кʹ��ڻ�׼ֵԪ�ص�����������</li>
+	 * <li>从数列中挑出一个元素，称为“基准”</li>
+	 * <li>重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边）。在这个分割之后，
+	 * 该基准是它的最后位置。这个称为分割（partition）操作。</li>
+	 * <li>递归地把小于基准值元素的子数列和大于基准值元素的子数列排序。</li>
 	 * </ul>
 	 * 
 	 * @param numbers
-	 * @param start=0
-	 * @param end=numbers.length-1
+	 * @param start
+	 *            =0
+	 * @param end
+	 *            =numbers.length-1
 	 */
 	public static void quickSort(int[] numbers, int start, int end) {
 		if (start < end) {
-			// ѡ����׼ֵ����һ��ֵ��Ϊ��׼ֵ
+			// 选定基准值，第一个值作为基准值
 			int base = numbers[start];
-			int temp; // ��¼��ʱֵ
+			int temp; // 记录临时值
 			int i = start, j = end;
 
 			do {
@@ -83,10 +84,9 @@ public class SortTest {
 	}
 
 	/**
-	 * ѡ������<br/>
-	 * <li>��δ�����������ҵ���СԪ�أ���ŵ��������е���ʼλ��</li>
-	 * <li>�ٴ�ʣ��δ����Ԫ���м���Ѱ����СԪ�أ�Ȼ��ŵ���������ĩβ��</li>
-	 * <li>�Դ����ƣ�ֱ������Ԫ�ؾ�������ϡ�</li>
+	 * 选择排序<br/>
+	 * <li>在未排序序列中找到最小元素，存放到排序序列的起始位置</li> <li>再从剩余未排序元素中继续寻找最小元素，然后放到排序序列末尾。</li>
+	 * <li>以此类推，直到所有元素均排序完毕。</li>
 	 * 
 	 * @param numbers
 	 */
@@ -94,7 +94,7 @@ public class SortTest {
 		int size = numbers.length, temp;
 		// { 23, 3, 32, 7, 42, 6, 46 }
 		for (int i = 0; i < size; i++) {
-			// k��¼δ������С���±�
+			// k记录未排序最小数下标
 			int k = i;
 			for (int j = i + 1; j < size; j++) {
 				if (numbers[j] < numbers[k]) {
@@ -108,14 +108,14 @@ public class SortTest {
 	}
 
 	/**
-	 * ��������<br/>
+	 * 插入排序<br/>
 	 * <ul>
-	 * <li>�ӵ�һ��Ԫ�ؿ�ʼ����Ԫ�ؿ�����Ϊ�Ѿ�������</li>
-	 * <li>ȡ����һ��Ԫ�أ����Ѿ������Ԫ�������дӺ���ǰɨ��</li>
-	 * <li>�����Ԫ�أ������򣩴�����Ԫ�أ�����Ԫ���Ƶ���һλ��</li>
-	 * <li>�ظ�����3��ֱ���ҵ��������Ԫ��С�ڻ��ߵ�����Ԫ�ص�λ��</li>
-	 * <li>����Ԫ�ز��뵽��λ����</li>
-	 * <li>�ظ�����2</li>
+	 * <li>从第一个元素开始，该元素可以认为已经被排序</li>
+	 * <li>取出下一个元素，在已经排序的元素序列中从后向前扫描</li>
+	 * <li>如果该元素（已排序）大于新元素，将该元素移到下一位置</li>
+	 * <li>重复步骤3，直到找到已排序的元素小于或者等于新元素的位置</li>
+	 * <li>将新元素插入到该位置中</li>
+	 * <li>重复步骤2</li>
 	 * </ul>
 	 * 
 	 * @param numbers
@@ -132,22 +132,22 @@ public class SortTest {
 	}
 
 	/**
-	 * �鲢����<br/>
+	 * 归并排序<br/>
 	 * <ul>
-	 * <li>����ռ䣬ʹ���СΪ�����Ѿ���������֮�ͣ��ÿռ�������źϲ��������</li>
-	 * <li>�趨����ָ�룬���λ�÷ֱ�Ϊ�����Ѿ��������е���ʼλ��</li>
-	 * <li>�Ƚ�����ָ����ָ���Ԫ�أ�ѡ�����С��Ԫ�ط��뵽�ϲ��ռ䣬���ƶ�ָ�뵽��һλ��</li>
-	 * <li>�ظ�����3ֱ��ĳһָ��ﵽ����β</li>
-	 * <li>����һ����ʣ�µ�����Ԫ��ֱ�Ӹ��Ƶ��ϲ�����β</li>
+	 * <li>申请空间，使其大小为两个已经排序序列之和，该空间用来存放合并后的序列</li>
+	 * <li>设定两个指针，最初位置分别为两个已经排序序列的起始位置</li>
+	 * <li>比较两个指针所指向的元素，选择相对小的元素放入到合并空间，并移动指针到下一位置</li>
+	 * <li>重复步骤3直到某一指针达到序列尾</li>
+	 * <li>将另一序列剩下的所有元素直接复制到合并序列尾</li>
 	 * </ul>
 	 * 
 	 * @param numbers
 	 */
 	public static void mergeSort(int[] numbers, int left, int right) {
-		int t = 1;// ÿ��Ԫ�ظ���
+		int t = 1;// 每组元素个数
 		int size = right - left + 1;
 		while (t < size) {
-			int s = t;// ����ѭ��ÿ��Ԫ�ظ���
+			int s = t;// 本次循环每组元素个数
 			t = 2 * s;
 			int i = left;
 			while (i + (t - 1) < size) {
@@ -160,7 +160,7 @@ public class SortTest {
 	}
 
 	/**
-	 * �鲢�㷨ʵ��
+	 * 归并算法实现
 	 * 
 	 * @param data
 	 * @param p

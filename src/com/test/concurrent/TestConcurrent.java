@@ -6,19 +6,19 @@ public class TestConcurrent {
 
 		for (int i = 0; i < 100; i++) {
 			final int index = i;
-			/*try {
-				Thread.sleep(100);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}*/
+			/*
+			 * try { Thread.sleep(100); } catch (InterruptedException e) {
+			 * e.printStackTrace(); }
+			 */
 
 			new Thread() {
 				public void run() {
-					System.out.println("µÚ" + index + "´ÎÏß³Ì»ñÈ¡ID===" + IdGenerator.next());
+					System.out.println("ç¬¬" + index + "æ¬¡çº¿ç¨‹èŽ·å–ID==="
+							+ IdGenerator.next());
 				};
 			}.start();
 		}
-		
+
 	}
 
 }

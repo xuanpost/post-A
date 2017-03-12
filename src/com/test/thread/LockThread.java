@@ -5,24 +5,24 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * 
- * Ïß³ÌÍ¬²½µÄÔËÓÃ
+ * çº¿ç¨‹åŒæ­¥çš„è¿ç”¨
  * 
  * @author zx2015
- *
+ * 
  */
 public class LockThread {
 
 	class Bank {
 
 		private int account = 100;
-		// ĞèÒªÉùÃ÷Õâ¸öËø
+		// éœ€è¦å£°æ˜è¿™ä¸ªé”
 		private Lock lock = new ReentrantLock();
 
 		public int getAccount() {
 			return account;
 		}
 
-		// ÕâÀï²»ÔÙĞèÒªsynchronized
+		// è¿™é‡Œä¸å†éœ€è¦synchronized
 		public void save(int money) {
 			lock.lock();
 			try {
@@ -45,28 +45,28 @@ public class LockThread {
 			for (int i = 0; i < 10; i++) {
 				// bank.saveTo(10);
 				bank.save(10);
-				System.out.println(i + "ÕË»§Óà¶îÎª£º" + bank.getAccount());
+				System.out.println(i + "è´¦æˆ·ä½™é¢ä¸ºï¼š" + bank.getAccount());
 			}
 		}
 
 	}
 
 	/**
-	 * ½¨Á¢Ïß³Ì£¬µ÷ÓÃÄÚ²¿Àà
+	 * å»ºç«‹çº¿ç¨‹ï¼Œè°ƒç”¨å†…éƒ¨ç±»
 	 */
 	public void useThread() {
 		Bank bank = new Bank();
 		NewThread new_thread = new NewThread(bank);
-		System.out.println("Ïß³Ì1");
+		System.out.println("çº¿ç¨‹1");
 		Thread thread1 = new Thread(new_thread);
 		thread1.start();
-		System.out.println("Ïß³Ì2");
+		System.out.println("çº¿ç¨‹2");
 		Thread thread2 = new Thread(new_thread);
 		thread2.start();
 	}
 
 	/**
-	 * main²âÊÔ
+	 * mainæµ‹è¯•
 	 * 
 	 * @param args
 	 */

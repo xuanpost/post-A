@@ -1,82 +1,82 @@
 package com.test.thread;
 
-
 /**
  * 
- * Ïß³ÌÍ¬²½µÄÔËÓÃ
+ * çº¿ç¨‹åŒæ­¥çš„è¿ç”¨
  * 
  * @author zx2015
- *
+ * 
  */
 public class SynchronizedThread {
 
-    class Bank {
-        private int account = 100;
+	class Bank {
+		private int account = 100;
 
-        public int getAccount() {
-            return account;
-        }
+		public int getAccount() {
+			return account;
+		}
 
-        /**
-         * ÓÃÍ¬²½·½·¨ÊµÏÖ
-         * 
-         * @param money
-         */
-        public synchronized void save(int money) {
-            account += money;
-        }
+		/**
+		 * ç”¨åŒæ­¥æ–¹æ³•å®ç°
+		 * 
+		 * @param money
+		 */
+		public synchronized void save(int money) {
+			account += money;
+		}
 
-        /**
-         * ÓÃÍ¬²½´úÂë¿éÊµÏÖ
-         * 
-         * @param money
-         */
-        public void saveTo(int money) {
-            synchronized (this) {
-                account += money;
-            }
-        }
-    }
+		/**
+		 * ç”¨åŒæ­¥ä»£ç å—å®ç°
+		 * 
+		 * @param money
+		 */
+		public void saveTo(int money) {
+			synchronized (this) {
+				account += money;
+			}
+		}
+	}
 
-    class NewThread implements Runnable {
-        private Bank bank;
+	class NewThread implements Runnable {
+		private Bank bank;
 
-        public NewThread(Bank bank) {
-            this.bank = bank;
-        }
+		public NewThread(Bank bank) {
+			this.bank = bank;
+		}
 
-        @Override
-        public void run() {
-            for (int i = 0; i < 10; i++) {
-                // bank.saveTo(10);
-                bank.save(10);
-                System.out.println(i + "ÕË»§Óà¶îÎª£º" + bank.getAccount());
-            }
-        }
+		@Override
+		public void run() {
+			for (int i = 0; i < 10; i++) {
+				// bank.saveTo(10);
+				bank.save(10);
+				System.out.println(i + "è´¦æˆ·ä½™é¢ä¸ºï¼š" + bank.getAccount());
+			}
+		}
 
-    }
+	}
 
-    /**
-     * ½¨Á¢Ïß³Ì£¬µ÷ÓÃÄÚ²¿Àà
-     */
-    public void useThread() {
-        Bank bank = new Bank();
-        NewThread new_thread = new NewThread(bank);
-        System.out.println("Ïß³Ì1");
-        Thread thread1 = new Thread(new_thread);
-        thread1.start();
-        System.out.println("Ïß³Ì2");
-        Thread thread2 = new Thread(new_thread);
-        thread2.start();
-    }
+	/**
+	 * å»ºç«‹çº¿ç¨‹ï¼Œè°ƒç”¨å†…éƒ¨ç±»
+	 */
+	public void useThread() {
+		Bank bank = new Bank();
+		NewThread new_thread = new NewThread(bank);
+		System.out.println("çº¿ç¨‹1");
+		Thread thread1 = new Thread(new_thread);
+		thread1.start();
+		System.out.println("çº¿ç¨‹2");
+		Thread thread2 = new Thread(new_thread);
+		thread2.start();
+	}
 
-    /**
-     * main²âÊÔ
-     * @param args
-     */
-    public static void main(String[] args) {
-        SynchronizedThread st = new SynchronizedThread();
-        st.useThread();
-    }
+	/**
+	 * mainæµ‹è¯•
+	 * 
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		SynchronizedThread st = new SynchronizedThread();
+		st.useThread();
+	}
 
 }

@@ -7,11 +7,10 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
 
 /**
- * Éú²úÕß-Ïû·ÑÕß: Ò»¸ö»ò¶à¸öÉú²úÕß´´½¨Ä³Ğ©¹¤×÷²¢½«ÆäÖÃÓÚ»º³åÇø»ò¶ÓÁĞÖĞ£¬Ò»¸ö»ò¶à¸öÏû·ÑÕß»á´Ó¶ÓÁĞÖĞ»ñµÃÕâĞ©¹¤×÷²¢Íê³ÉÖ®¡£
- * ÕâÀïµÄ»º³åÇø»ò¶ÓÁĞÊÇÁÙ½ç×ÊÔ´¡£µ±»º³åÇø»ò¶ÓÁĞ·ÅÂúµÄÊ±ºò£¬Éú²úÕâ»á±»×èÈû£»
- * ¶ø»º³åÇø»ò¶ÓÁĞÎª¿ÕµÄÊ±ºò£¬Ïû·ÑÕß»á±»×èÈû¡£Éú²úÕßºÍÏû·ÑÕßµÄµ÷¶ÈÊÇÍ¨¹ı¶şÕßÏà»¥½»»»ĞÅºÅÍê³ÉµÄ¡£
+ * ç”Ÿäº§è€…-æ¶ˆè´¹è€…ï¼šBlockingQueueå°±æ˜¯ä¸€ä¸ªåœ¨å¹¶å‘ç¯å¢ƒä¸‹éå¸¸å¥½ç”¨çš„å·¥å…·ï¼Œåœ¨è°ƒç”¨putæ–¹æ³•å‘é˜Ÿåˆ—ä¸­æ’å…¥å…ƒç´ æ—¶ï¼Œå¦‚æœé˜Ÿåˆ—å·²æ»¡ï¼Œ
+ * å®ƒä¼šè®©æ’å…¥å…ƒç´ çš„çº¿ç¨‹ç­‰å¾…é˜Ÿåˆ—è…¾å‡ºç©ºé—´ï¼› åœ¨è°ƒç”¨takeæ–¹æ³•ä»é˜Ÿåˆ—ä¸­å–å…ƒç´ æ—¶ï¼Œå¦‚æœé˜Ÿåˆ—ä¸ºç©ºï¼Œå–å‡ºå…ƒç´ çš„çº¿ç¨‹å°±ä¼šé˜»å¡ã€‚
  * 
- * BlockingQueueÊµÏÖ
+ * BlockingQueue
  * 
  * @author zx2015
  */
@@ -21,11 +20,11 @@ public class BlockingQueueCal {
 		BlockingQueue<Task> taskQueue = new LinkedBlockingQueue<>(10);
 		ExecutorService es = Executors.newFixedThreadPool(5);
 
-		// Éú²úÕß
+		// ç”Ÿäº§è€…
 		for (int i = 0; i < 2; i++) {
 			es.execute(new Producer(taskQueue));
 		}
-		// Ïû·ÑÕß
+		// æ¶ˆè´¹è€…
 		for (int i = 0; i < 3; i++) {
 			es.execute(new Consumer(taskQueue));
 		}
@@ -33,13 +32,13 @@ public class BlockingQueueCal {
 }
 
 /**
- * ¹¤×÷ÈÎÎñ
+ * å·¥ä½œä»»åŠ¡
  * 
  * @author zx2015
- *
+ * 
  */
 class Task {
-	// ÈÎÎñ±àºÅ
+	// å·¥ä½œä»»åŠ¡ç¼–å·
 	private String id;
 
 	public Task() {
@@ -53,10 +52,10 @@ class Task {
 }
 
 /**
- * Ïû·ÑÕß
+ * æ¶ˆè´¹è€…
  * 
  * @author zx2015
- *
+ * 
  */
 class Consumer implements Runnable {
 	private BlockingQueue<Task> taskQueue;
@@ -70,7 +69,8 @@ class Consumer implements Runnable {
 		while (true) {
 			try {
 				Task task = taskQueue.take();
-				System.out.println("Consumer[" + Thread.currentThread().getName() + "] take " + task);
+				System.out.println("Consumer["
+						+ Thread.currentThread().getName() + "] take " + task);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -79,10 +79,10 @@ class Consumer implements Runnable {
 }
 
 /**
- * Éú²úÕß
+ * ç”Ÿäº§è€…
  * 
  * @author zx2015
- *
+ * 
  */
 class Producer implements Runnable {
 	private BlockingQueue<Task> taskQueue;
@@ -97,7 +97,8 @@ class Producer implements Runnable {
 			try {
 				Task task = new Task();
 				taskQueue.put(task);
-				System.out.println("Producer[" + Thread.currentThread().getName() + "] put " + task);
+				System.out.println("Producer["
+						+ Thread.currentThread().getName() + "] put " + task);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

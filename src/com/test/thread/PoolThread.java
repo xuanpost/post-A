@@ -5,32 +5,33 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Ïß³Ì³Ø
+ * çº¿ç¨‹æ± 
  * 
  * @author zx2015
- *
+ * 
  */
 public class PoolThread {
-	
+
 	public static void main(String[] args) {
-		ThreadPoolExecutor executor = new ThreadPoolExecutor(5, 10, 200, TimeUnit.MILLISECONDS,
-				new ArrayBlockingQueue<Runnable>(5));
+		ThreadPoolExecutor executor = new ThreadPoolExecutor(5, 10, 200,
+				TimeUnit.MILLISECONDS, new ArrayBlockingQueue<Runnable>(5));
 
 		for (int i = 0; i < 15; i++) {
 			MyTask myTask = new MyTask(i);
 			executor.execute(myTask);
-			System.out.println("Ïß³Ì³ØÖÐÏß³ÌÊýÄ¿£º" + executor.getPoolSize() + "£¬¶ÓÁÐÖÐµÈ´ýÖ´ÐÐµÄÈÎÎñÊýÄ¿£º" + executor.getQueue().size()
-					+ "£¬ÒÑÖ´ÐÐÍê±ÏµÄÈÎÎñÊýÄ¿£º" + executor.getCompletedTaskCount());
+			System.out.println("çº¿ç¨‹æ± ä¸­çº¿ç¨‹æ•°ç›®ï¼š" + executor.getPoolSize()
+					+ "ï¼Œé˜Ÿåˆ—ä¸­ç­‰å¾…æ‰§è¡Œçš„ä»»åŠ¡æ•°ç›®ï¼š" + executor.getQueue().size()
+					+ "ï¼Œå·²æ‰§è¡Œå®Œæ¯•çš„ä»»åŠ¡æ•°ç›®ï¼š" + executor.getCompletedTaskCount());
 		}
 		executor.shutdown();
 	}
 }
 
 /**
- * Ïß³Ìµ÷ÓÃ
+ * çº¿ç¨‹è°ƒç”¨
  * 
  * @author zx2015
- *
+ * 
  */
 class MyTask implements Runnable {
 	private int taskNum;
@@ -41,12 +42,12 @@ class MyTask implements Runnable {
 
 	@Override
 	public void run() {
-		System.out.println("ÕýÔÚÖ´ÐÐtask " + taskNum);
+		System.out.println("æ­£åœ¨æ‰§è¡Œtask " + taskNum);
 		try {
 			Thread.sleep(4000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		System.out.println("task " + taskNum + "Ö´ÐÐÍê±Ï");
+		System.out.println("task " + taskNum + "æ‰§è¡Œå®Œæ¯•");
 	}
 }

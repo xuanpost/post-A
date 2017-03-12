@@ -17,7 +17,7 @@ public class PoolExecutorThread {
 	}
 
 	/**
-	 * newCachedThreadPool ´´½¨Ò»¸ö¿É»º´æÏß³Ì³Ø£¬Èç¹ûÏß³Ì³Ø³¤¶È³¬¹ı´¦ÀíĞèÒª£¬¿ÉÁé»î»ØÊÕ¿ÕÏĞÏß³Ì£¬ÈôÎŞ¿É»ØÊÕ£¬ÔòĞÂ½¨Ïß³Ì¡£
+	 * newCachedThreadPool åˆ›å»ºä¸€ä¸ªå¯ç¼“å­˜çº¿ç¨‹æ± ï¼Œå¦‚æœçº¿ç¨‹æ± é•¿åº¦è¶…è¿‡å¤„ç†éœ€è¦ï¼Œå¯çµæ´»å›æ”¶ç©ºé—²çº¿ç¨‹ï¼Œè‹¥æ— å¯å›æ”¶ï¼Œåˆ™æ–°å»ºçº¿ç¨‹ã€‚
 	 */
 	public static void cachedThreadPool() {
 		ExecutorService cachedThread = Executors.newCachedThreadPool();
@@ -33,7 +33,7 @@ public class PoolExecutorThread {
 			cachedThread.execute(new Runnable() {
 				@Override
 				public void run() {
-					System.out.println("newCachedThreadPoolµ±Ç°Ö´ĞĞ===" + index);
+					System.out.println("newCachedThreadPoolå½“å‰æ‰§è¡Œ===" + index);
 				}
 			});
 		}
@@ -41,7 +41,7 @@ public class PoolExecutorThread {
 	}
 
 	/**
-	 * newFixedThreadPool ´´½¨Ò»¸ö¶¨³¤Ïß³Ì³Ø£¬¿É¿ØÖÆÏß³Ì×î´ó²¢·¢Êı£¬³¬³öµÄÏß³Ì»áÔÚ¶ÓÁĞÖĞµÈ´ı
+	 * newFixedThreadPool åˆ›å»ºä¸€ä¸ªå®šé•¿çº¿ç¨‹æ± ï¼Œå¯æ§åˆ¶çº¿ç¨‹æœ€å¤§å¹¶å‘æ•°ï¼Œè¶…å‡ºçš„çº¿ç¨‹ä¼šåœ¨é˜Ÿåˆ—ä¸­ç­‰å¾…
 	 * 
 	 * @param size
 	 */
@@ -53,7 +53,7 @@ public class PoolExecutorThread {
 			fixedThread.execute(new Runnable() {
 				@Override
 				public void run() {
-					System.out.println("newFixedThreadPoolµ±Ç°Ö´ĞĞ===" + index);
+					System.out.println("newFixedThreadPoolå½“å‰æ‰§è¡Œ===" + index);
 					try {
 						Thread.sleep(1000);
 					} catch (InterruptedException e) {
@@ -66,13 +66,14 @@ public class PoolExecutorThread {
 	}
 
 	/**
-	 * newScheduledThreadPool ´´½¨Ò»¸ö¶¨³¤Ïß³Ì³Ø£¬Ö§³Ö¶¨Ê±¼°ÖÜÆÚĞÔÈÎÎñÖ´ĞĞ
+	 * newScheduledThreadPool åˆ›å»ºä¸€ä¸ªå®šé•¿çº¿ç¨‹æ± ï¼Œæ”¯æŒå®šæ—¶åŠå‘¨æœŸæ€§ä»»åŠ¡æ‰§è¡Œ
 	 * 
 	 * @param size
 	 */
 	public static void scheduledThreadPool(int corePoolSize) {
-		// ÑÓ³Ù3ÃëÖ´ĞĞ
-		ScheduledExecutorService scheduledThread = Executors.newScheduledThreadPool(corePoolSize);
+		// å»¶è¿Ÿ3ç§’æ‰§è¡Œ
+		ScheduledExecutorService scheduledThread = Executors
+				.newScheduledThreadPool(corePoolSize);
 		scheduledThread.schedule(new Runnable() {
 			@Override
 			public void run() {
@@ -81,30 +82,33 @@ public class PoolExecutorThread {
 		}, 3, TimeUnit.SECONDS);
 		scheduledThread.shutdown();
 
-		// ±íÊ¾ÑÓ³Ù1ÃëºóÃ¿3ÃëÖ´ĞĞÒ»´Î
-		ScheduledExecutorService scheduleAtFixed = Executors.newScheduledThreadPool(corePoolSize);
+		// è¡¨ç¤ºå»¶è¿Ÿ1ç§’åæ¯3ç§’æ‰§è¡Œä¸€æ¬¡
+		ScheduledExecutorService scheduleAtFixed = Executors
+				.newScheduledThreadPool(corePoolSize);
 		scheduleAtFixed.scheduleAtFixedRate(new Runnable() {
 			@Override
 			public void run() {
-				System.out.println("delay 1 seconds, and excute every 3 seconds");
+				System.out
+						.println("delay 1 seconds, and excute every 3 seconds");
 			}
 		}, 1, 3, TimeUnit.SECONDS);
 		// scheduleAtFixed.shutdown();
 	}
 
 	/**
-	 * newSingleThreadExecutor´´½¨Ò»¸öµ¥Ïß³Ì»¯µÄÏß³Ì³Ø£¬ËüÖ»»áÓÃÎ¨Ò»µÄ¹¤×÷Ïß³ÌÀ´Ö´ĞĞÈÎÎñ£¬±£Ö¤ËùÓĞÈÎÎñ°´ÕÕÖ¸¶¨Ë³Ğò(FIFO,
-	 * LIFO, ÓÅÏÈ¼¶)Ö´ĞĞ
+	 * newSingleThreadExecutoråˆ›å»ºä¸€ä¸ªå•çº¿ç¨‹åŒ–çš„çº¿ç¨‹æ± ï¼Œå®ƒåªä¼šç”¨å”¯ä¸€çš„å·¥ä½œçº¿ç¨‹æ¥æ‰§è¡Œä»»åŠ¡ï¼Œä¿è¯æ‰€æœ‰ä»»åŠ¡æŒ‰ç…§æŒ‡å®šé¡ºåº(FIFO,
+	 * LIFO, ä¼˜å…ˆçº§)æ‰§è¡Œ
 	 */
 	public static void singleThreadExecutor() {
 		ExecutorService singleThread = Executors.newSingleThreadExecutor();
-		
+
 		for (int i = 0; i < 10; i++) {
 			final int index = i;
 			singleThread.execute(new Runnable() {
 				public void run() {
 					try {
-						System.out.println("newSingleThreadExecutorµ±Ç°Ö´ĞĞ==="+index);
+						System.out.println("newSingleThreadExecutorå½“å‰æ‰§è¡Œ==="
+								+ index);
 						Thread.sleep(1000);
 					} catch (InterruptedException e) {
 						e.printStackTrace();

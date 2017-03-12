@@ -29,7 +29,7 @@ public class StringTestClass {
 				}
 			}.start();
 		}
-		
+
 		try {
 			Thread.sleep(100);
 		} catch (InterruptedException e) {
@@ -47,55 +47,55 @@ public class StringTestClass {
 	}
 
 	/**
-	 * MAP¼¯ºÏ±éÀú£ºkeySet()
+	 * MAPé›†åˆéå†ï¼škeySet()
 	 * 
 	 * @param map
 	 */
 	public static void sortMapOne(Map<String, String> map) {
-		System.out.println("µÚÒ»ÖÖ£ºÍ¨¹ıMap.keySet±éÀúkeyºÍvalue");
+		System.out.println("ç¬¬ä¸€ç§ï¼šé€šè¿‡Map.keySetéå†keyå’Œvalue");
 
 		for (String key : map.keySet()) {
-			System.out.println(key + "£º" + map.get(key));
+			System.out.println(key + "ï¼š" + map.get(key));
 		}
 	}
 
 	/**
-	 * MAP¼¯ºÏ±éÀú£ºiterator()
+	 * MAPé›†åˆéå†ï¼šiterator()
 	 * 
 	 * @param map
 	 */
 	public static void sortMapTow(Map<String, String> map) {
-		System.out.println("µÚ¶şÖÖ£ºÍ¨¹ıMap.entrySetÊ¹ÓÃiterator±éÀúkeyºÍvalue");
+		System.out.println("ç¬¬äºŒç§ï¼šé€šè¿‡Map.entrySetä½¿ç”¨iteratoréå†keyå’Œvalue");
 
 		Iterator<Entry<String, String>> entrySet = map.entrySet().iterator();
 		while (entrySet.hasNext()) {
 			Entry<String, String> entry = entrySet.next();
-			System.out.println(entry.getKey() + "£º" + entry.getValue());
+			System.out.println(entry.getKey() + "ï¼š" + entry.getValue());
 		}
 	}
 
 	/**
-	 * MAP¼¯ºÏ±éÀú£ºentrySet()
+	 * MAPé›†åˆéå†ï¼šentrySet()
 	 * 
 	 * @param map
 	 */
 	public static void sortMapThree(Map<String, String> map) {
-		System.out.println("µÚÈıÖÖ£ºÍ¨¹ıMap.entrySet±éÀúkeyºÍvalue");
+		System.out.println("ç¬¬ä¸‰ç§ï¼šé€šè¿‡Map.entrySetéå†keyå’Œvalue");
 
 		for (Entry<String, String> entry : map.entrySet()) {
-			System.out.println(entry.getKey() + "£º" + entry.getValue());
+			System.out.println(entry.getKey() + "ï¼š" + entry.getValue());
 		}
 	}
 
 	/**
-	 * ¼ÆËã1-2+3-4+5-6+7...+n
+	 * è®¡ç®—1-2+3-4+5-6+7...+n
 	 * 
 	 * @param n
 	 */
 	public static void sumToatl(int n) {
 		int sum = 0;
 		if (n < 1) {
-			System.out.println("ÊäÈëÊı×ÖÓĞ´í£¡");
+			System.out.println("è¾“å…¥æ•°å­—æœ‰é”™ï¼");
 		} else {
 			for (int i = 1; i <= n; i++) {
 				if (i % 2 == 0) {
@@ -104,26 +104,26 @@ public class StringTestClass {
 					sum = sum + i;
 				}
 			}
-			System.out.println("ÊäÈëÊı×Ö£º" + n + ";¼ÆËã½á¹ûÎª£º" + sum);
+			System.out.println("è¾“å…¥æ•°å­—ï¼š" + n + ";è®¡ç®—ç»“æœä¸ºï¼š" + sum);
 		}
 	}
 
 	/**
-	 * ¼ÆËã1-2+3-4+5-6+7...+n¡£¿¼ÂÇĞÔÄÜ
+	 * è®¡ç®—1-2+3-4+5-6+7...+nã€‚è€ƒè™‘æ€§èƒ½
 	 * 
 	 * @param n
 	 */
 	public static void sumToatlTop(int n) {
 		int sum = 0;
 		if (n < 1) {
-			System.out.println("ÊäÈëÊı×ÖÓĞ´í£¡");
+			System.out.println("è¾“å…¥æ•°å­—æœ‰é”™ï¼");
 		} else {
 			if (n % 2 == 0) {
 				sum = -(n / 2);
 			} else {
 				sum = n - (n - 1) / 2;
 			}
-			System.out.println("¿¼ÂÇĞÔÄÜ¡£ÊäÈëÊı×Ö£º" + n + ";¼ÆËã½á¹ûÎª£º" + sum);
+			System.out.println("è€ƒè™‘æ€§èƒ½ã€‚è¾“å…¥æ•°å­—ï¼š" + n + ";è®¡ç®—ç»“æœä¸ºï¼š" + sum);
 		}
 	}
 

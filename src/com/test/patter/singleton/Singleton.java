@@ -1,24 +1,27 @@
 package com.test.patter.singleton;
 
 /**
- * µ¥ÀıÄ£Ê½
+ * å•ä¾‹æ¨¡å¼
+ * 
  * @author zx2015
- *
+ * 
  */
 public class Singleton {
-	
+
 	/**
-	 * ³ÖÓĞË½ÓĞ¾²Ì¬ÊµÀı£¬·ÀÖ¹±»ÒıÓÃ£¬´Ë´¦¸³ÖµÎªnull£¬Ä¿µÄÊÇÊµÏÖÑÓ³Ù¼ÓÔØ
+	 * æŒæœ‰ç§æœ‰é™æ€å®ä¾‹ï¼Œé˜²æ­¢è¢«å¼•ç”¨ï¼Œæ­¤å¤„èµ‹å€¼ä¸ºnullï¼Œç›®çš„æ˜¯å®ç°å»¶è¿ŸåŠ è½½
 	 */
 	private static Singleton singleton = null;
 
 	/**
-	 * Ë½ÓĞ¹¹Ôì·½·¨£¬·ÀÖ¹±»ÊµÀı»¯
+	 * ç§æœ‰æ„é€ æ–¹æ³•ï¼Œé˜²æ­¢è¢«å®ä¾‹åŒ–
 	 */
-	private Singleton() {}
-	
+	private Singleton() {
+	}
+
 	/**
-	 * 1.¾²Ì¬¹¤³Ì·½·¨£¬´´½¨ÊµÀı
+	 * 1.é™æ€å·¥ç¨‹æ–¹æ³•ï¼Œåˆ›å»ºå®ä¾‹
+	 * 
 	 * @return
 	 */
 	public static Singleton getSingleton() {
@@ -27,9 +30,10 @@ public class Singleton {
 		}
 		return singleton;
 	}
-	
+
 	/**
-	 * 2.¾²Ì¬¹¤³Ì·½·¨£¬´´½¨ÊµÀı¡£Ïß³Ì°²È«£¬·½·¨Ìí¼Ósynchronized
+	 * 2.é™æ€å·¥ç¨‹æ–¹æ³•ï¼Œåˆ›å»ºå®ä¾‹ã€‚çº¿ç¨‹å®‰å…¨ï¼Œæ–¹æ³•æ·»åŠ synchronized
+	 * 
 	 * @return
 	 */
 	public static synchronized Singleton getSingletonSyn() {
@@ -38,9 +42,10 @@ public class Singleton {
 		}
 		return singleton;
 	}
-	
+
 	/**
-	 * 3.¾²Ì¬¹¤³Ì·½·¨£¬´´½¨ÊµÀı¡£Ïß³Ì°²È«£¬Ö»ÔÚ´´½¨¶ÔÏóÊ±Ìí¼Ósynchronized
+	 * 3.é™æ€å·¥ç¨‹æ–¹æ³•ï¼Œåˆ›å»ºå®ä¾‹ã€‚çº¿ç¨‹å®‰å…¨ï¼Œåªåœ¨åˆ›å»ºå¯¹è±¡æ—¶æ·»åŠ synchronized
+	 * 
 	 * @return
 	 */
 	public static Singleton getSingletonSynObj() {
@@ -53,10 +58,10 @@ public class Singleton {
 		}
 		return singleton;
 	}
-	
-	
+
 	/**
-	 * 4.¾²Ì¬¹¤³Ì·½·¨£¬´´½¨ÊµÀı¡£Ïß³Ì°²È«£¬´´½¨·½·¨¡¢»ñÈ¡·½·¨·ÖÀë¡£Ö»Ğè´´½¨·½·¨synchronized
+	 * 4.é™æ€å·¥ç¨‹æ–¹æ³•ï¼Œåˆ›å»ºå®ä¾‹ã€‚çº¿ç¨‹å®‰å…¨ï¼Œåˆ›å»ºæ–¹æ³•ã€è·å–æ–¹æ³•åˆ†ç¦»ã€‚åªéœ€åˆ›å»ºæ–¹æ³•synchronized
+	 * 
 	 * @return
 	 */
 	private static synchronized void singletonInit() {
@@ -64,32 +69,32 @@ public class Singleton {
 			singleton = new Singleton();
 		}
 	}
+
 	public static Singleton getSingletonInit() {
 		if (null == singleton) {
 			singletonInit();
 		}
 		return singleton;
 	}
-	
-	
+
 	/**
-	 * 5.µ¥ÀıÄ£Ê½£º¾²Ì¬ÄÚ²¿Àà·½·¨ÊµÏÖ
+	 * 5.å•ä¾‹æ¨¡å¼ï¼šé™æ€å†…éƒ¨ç±»æ–¹æ³•å®ç°
 	 */
 	private static class SingletonFactory {
 		private static final Singleton INTANCE = new Singleton();
 	}
+
 	public static Singleton getSingletonIntance() {
 		return SingletonFactory.INTANCE;
 	}
-	
-	
+
 	/**
-	 * 6.¶öººÄ£Ê½£¬»ùÓÚClassLoader»úÖÆ±ÜÃâÁË¶àÏß³ÌµÄÍ¬²½ÎÊÌâ
+	 * 6.é¥¿æ±‰æ¨¡å¼ï¼ŒåŸºäºClassLoaderæœºåˆ¶é¿å…äº†å¤šçº¿ç¨‹çš„åŒæ­¥é—®é¢˜
 	 */
 	private static Singleton singletonLoder = new Singleton();
-	
+
 	public static Singleton getSingletonLoder() {
 		return singletonLoder;
 	}
-	
+
 }
