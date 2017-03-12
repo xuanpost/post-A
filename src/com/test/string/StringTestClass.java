@@ -11,8 +11,6 @@ public class StringTestClass {
 		// sumToatl(998);
 		// sumToatlTop(998);
 
-		// StringBuffer st1 = new StringBuffer();
-
 		// Map map = new HashMap();
 		// map.put("1", "A");
 		// map.put("2", "B");
