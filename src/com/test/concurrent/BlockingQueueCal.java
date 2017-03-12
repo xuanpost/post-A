@@ -27,6 +27,7 @@ public class BlockingQueueCal {
 		for (int i = 0; i < 2; i++) {
 			es.execute(new Producer(taskQueue));
 		}
+		
 		// 消费者
 		for (int i = 0; i < 3; i++) {
 			es.execute(new Consumer(taskQueue));
