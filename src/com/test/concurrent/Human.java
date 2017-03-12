@@ -1,10 +1,8 @@
 package com.test.concurrent;
 
-class Annoyance extends Exception {
-}
+class Annoyance extends Exception {}
 
-class Sneeze extends Annoyance {
-}
+class Sneeze extends Annoyance {}
 
 public class Human {
 
